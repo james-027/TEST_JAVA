@@ -11,8 +11,11 @@ import com.exam.springexampractice.service.EmployeeService;
 @RestController
 @RequestMapping("employee")
 public class EmployeeController{
-    @Autowired
-    private EmployeeService employeeService;
+    private final EmployeeService employeeService;
+
+    public EmployeeController(EmployeeService employeeService){
+        this.employeeService = employeeService;
+    }
 
     @GetMapping("/{id}/details")
     public String getEmployeeId(@PathVariable int id, @RequestParam String department){

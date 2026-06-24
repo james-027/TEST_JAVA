@@ -10,9 +10,11 @@ import com.exam.springexampractice.service.NotificationService;
 @RestController
 public class NotificationController{
 
-    @Autowired
-    @Qualifier("smsNotificationService")
-    private NotificationService notificationService;
+    private final NotificationService notificationService;
+
+    public NotificationController(@Qualifier("smsNotificationService")NotificationService notificationService){
+        this.notificationService = notificationService;
+    }
 
     @GetMapping("/notify")
     public String getNotify(@RequestParam String name){

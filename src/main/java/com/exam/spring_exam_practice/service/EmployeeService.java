@@ -7,8 +7,11 @@ import com.exam.springexampractice.repository.EmployeeRepository;
 @Service
 public class EmployeeService{
 
-    @Autowired
-    private EmployeeRepository employeeRepository;
+    private final EmployeeRepository employeeRepository;
+
+    public EmployeeService(EmployeeRepository employeeRepository){
+        this.employeeRepository = employeeRepository;
+    }
 
     public String getEmployeeId(int id){
         return employeeRepository.findEmployeeById(id);
